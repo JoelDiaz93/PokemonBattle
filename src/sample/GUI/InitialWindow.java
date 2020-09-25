@@ -12,7 +12,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.image.ImageView;
-import sample.playerRegister.InputView;
 import sample.pokemon.PokemonsList;
 
 public class InitialWindow extends Application {

@@ -23,6 +23,7 @@ import sample.animation.AnimationImage;
 import sample.animation.LoadImage;
 import sample.animation.SpriteAnimation;
 import sample.pokemon.PokemonsList;
+import sample.pokemon.Teams;
 import sample.pokemon.Type;
 
 public class SelectPlayer extends Application {
@@ -136,8 +137,17 @@ public class SelectPlayer extends Application {
         BorderPane.setAlignment(playerTwo, Pos.CENTER);
         BorderPane.setMargin(firstButton, new Insets(15, 15, 15, 15));
 
-        firstButton.setOnAction((ActionEvent event) -> battlePokemon.start(window));
-        playerButton.setOnAction((ActionEvent) -> registerPlayer.start(window));
+        firstButton.setOnAction((ActionEvent event) -> {
+            battlePokemon.setTeamsBattle((String) namePlayerOne.getValue(),(String) selectPokemonOne.getValue(), (String) namePlayerTwo.getValue(),(String) selectPokemonTwo.getValue());
+            battlePokemon.start(window);
+        });
+        playerButton.setOnAction((ActionEvent) -> {
+            try {
+                registerPlayer.start(window);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         Scene firstScene = new Scene(rootSelect, 900, 700);
         firstScene.setFill(Color.TRANSPARENT);

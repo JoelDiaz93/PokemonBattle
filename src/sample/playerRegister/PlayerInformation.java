@@ -1,5 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package sample.playerRegister;
 
+/**
+ *
+ * @author Ismael
+ */
 public class PlayerInformation {
 
     private int gameID;
@@ -9,7 +18,7 @@ public class PlayerInformation {
     private String nickName;
     private int victories;
 
-    public PlayerInformation(int gameID, String userID, String name, String lastName, String nickName, int victories) {
+    public PlayerInformation(int gameID, String name, String lastName, String userID , String nickName, int victories) {
         this.userID = userID;
         this.name = name;
         this.lastName = lastName;
@@ -17,9 +26,9 @@ public class PlayerInformation {
         this.victories = victories;
         this.gameID = gameID;
     }
-    
-    public PlayerInformation(String userID, String name, String lastName, String nickName){
-        this(0, userID, name, lastName, nickName, 0);
+
+    public PlayerInformation(String name, String lastName, String userID, String nickName){
+        this(0, name, lastName, userID, nickName, 0);
     }
 
     public String getUserID() {
@@ -44,8 +53,8 @@ public class PlayerInformation {
 
     @Override
     public String toString() {
-        return this.gameID + " " + this.name + " " + this.lastName
-                + " " + this.userID + " " + this.nickName + " " + this.victories;
+        return this.gameID + "," + this.name + "," + this.lastName
+                + "," + this.userID + "," + this.nickName + "," + this.victories;
     }
 
     public void setUserID(String userID) {
@@ -75,6 +84,6 @@ public class PlayerInformation {
     public int getGameID() {
         return gameID;
     }
-    
-    
+
+
 }

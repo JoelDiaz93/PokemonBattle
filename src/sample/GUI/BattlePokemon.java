@@ -13,11 +13,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import sample.pokemon.Teams;
+
+import java.util.ArrayList;
 
 public class BattlePokemon extends Application {
     final String BorderPane_Style = "-fx-background-color:rgb(242,242,238,0.95); -fx-background-radius: 15 15 15 15, 15 15 15 15, 15 15 15 15;";
     final String Button_Style = "-fx-border-radius: 15 15 15 15, 15 15 15 15, 15 15 15 15;-fx-text-fill: #212121; -fx-font-size: 30; -fx-font-weight: bold; -fx-border-color: #212121;-fx-background-color: transparent";
     final String Button_Style_Hover = "-fx-border-radius: 15 15 15 15, 15 15 15 15, 15 15 15 15;-fx-text-fill: #303F9F; -fx-font-size: 30; -fx-font-weight: bold; -fx-border-color: #ffffff;-fx-background-color: transparent";
+
+    Teams teamsBattle = new Teams();
 
     @Override
     public void start(Stage window) {
@@ -65,12 +70,13 @@ public class BattlePokemon extends Application {
         defensa2.setPrefSize(110, 25);
         ataqueFinal2.setPrefSize(110, 25);
 
-        Label nombreJugador2 = new Label("Juan Santos");
-        Label personajeJugador2 = new Label("Machamp");
+        ArrayList<Integer> value2 = teamsBattle.getValue2();
+        Label nombreJugador2 = new Label(teamsBattle.getTeam2().get(0));
+        Label personajeJugador2 = new Label(teamsBattle.getTeam2().get(1));
         Label sVida = new Label("Vida:");
         Label sEstamina = new Label("Estamina:");
-        TextField vida2 = new TextField();
-        TextField estamina2 = new TextField();
+        TextField vida2 = new TextField(value2.get(0)+" / "+teamsBattle.getValue2().get(0));
+        TextField estamina2 = new TextField(value2.get(1)+" / "+teamsBattle.getValue2().get(1));
 
         nombreJugador2.setFont(Font.font("Arial", 19));
         personajeJugador2.setFont(Font.font("Arial", 18));
@@ -115,12 +121,13 @@ public class BattlePokemon extends Application {
         secondScreen.setBottom(historialAtaques);
 //----------------------------------------------------------------------------------
         //Jugadores - Vida - Estamina
-        Label nombreJugador1 = new Label("Luis Alboros");
-        Label personajeJugador1 = new Label("Lucario");
-        Label xVida = new Label("Vida:");
-        Label xEstamina = new Label("Estamina:");
-        TextField vida1 = new TextField();
-        TextField estamina1 = new TextField();
+        ArrayList<Integer> value1 = teamsBattle.getValue1();
+        Label nombreJugador1 = new Label(teamsBattle.getTeam1().get(0));
+        Label personajeJugador1 = new Label(teamsBattle.getTeam1().get(1));
+        Label xVida = new Label("Vida");
+        Label xEstamina = new Label("Estamina");
+        TextField vida1 = new TextField(value1.get(0)+" / "+ teamsBattle.getValue1().get(0));
+        TextField estamina1 = new TextField(value1.get(1)+" / "+ teamsBattle.getValue1().get(1));
 
         nombreJugador1.setFont(Font.font("Arial", 19));
         personajeJugador1.setFont(Font.font("Arial", 18));
@@ -145,5 +152,11 @@ public class BattlePokemon extends Application {
 
         window.setScene(secondScene);
         window.show();
+    }
+
+    public void setTeamsBattle(String player1, String pokemon1, String player2, String pokemon2){
+        //this.teamsBattle = new Teams();
+        this.teamsBattle.setTeam1(player1, pokemon1);
+        this.teamsBattle.setTeam2(player2, pokemon2);
     }
 }
